@@ -1,0 +1,21 @@
+{
+  "fitbit": {
+    "appUUID": "f42df440-774a-4a4b-aeb8-47ec9dc5cdd5",
+    "appType": "clockface",
+    "appDisplayName": "Keep It Simple",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [
+      "access_heart_rate",
+      "access_activity"
+    ],
+    "buildTargets": [
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Keep It Simple"
+      }
+    }
+  }
+}
