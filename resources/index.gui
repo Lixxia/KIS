@@ -11,21 +11,7 @@
     </use>
   </svg>
   
-  <svg id="timeText" >
-    <svg id="hour0Box" class="timeBox" >
-      <text id="hour0" class="timeHour" />
-    </svg>
-    <svg id="hour1Box" class="timeBox">
-      <text id="hour1" class="timeHour" />
-    </svg>
-    <svg id="min0Box" class="timeBox">
-      <text id="min0" class="timeMin" />
-    </svg>
-    <svg id="min1Box" class="timeBox">
-      <text id="min1" class="timeMin" />
-    </svg>
-  </svg>
-  
+  <text id="timeText"/>
   <text id="date" />
   
   <svg class="stats-bottom">
@@ -40,18 +26,6 @@
         <image id="steps-icon" href="images/steps.png" class="stat-icon" />
         <text id="steps" />
       </use>
-      <use href="#cycleview-item" class="cycle-item">
-        <image id="floors-icon" href="images/floors.png" class="stat-icon" />
-        <text id="floors"/>
-      </use>
-      <use href="#cycleview-item" class="cycle-item">
-        <image id="cals-icon" href="images/cals.png" class="stat-icon" />
-        <text id="cals"/>
-      </use>
-      <use href="#cycleview-item" class="cycle-item">
-        <image id="dist-icon" href="images/dist.png" class="stat-icon" />
-        <text id="dist"/>
-      </use>                  
     </use>
   </svg>
 </svg>

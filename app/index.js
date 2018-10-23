@@ -1,6 +1,5 @@
 import clock from "clock";
 import * as messaging from "messaging";
-import { battery } from "power";
 import { WatchUI } from "./interface.js";
 
 import { memory } from "system";

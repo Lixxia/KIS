@@ -15,14 +15,11 @@ hrm.onreading = function() {
 }
 
 export function WatchUI() {
-  this.timeDigits = {};
   this.secondaryTexts = {};
-  this.timeFormats = {};
+  this.timeText = document.getElementById("timeText");
   this.batRect = document.getElementById("batRect");
 
-  ['hour0','hour1','min0','min1'].map(pid => this.timeDigits[pid] = document.getElementById(`${pid}`));
-  ['date','cals','floors','dist','hr','steps','bat'].map(sid => this.secondaryTexts[sid] = document.getElementById(`${sid}`));
-  ['timeText','hour0Box','hour1Box','min0Box','min1Box'].map(tid => this.timeFormats[tid] = document.getElementById(`${tid}`));
+  ['date','hr','steps','bat'].map(sid => this.secondaryTexts[sid] = document.getElementById(`${sid}`));
   
   //INIT
   try {
@@ -46,9 +43,7 @@ WatchUI.prototype.updatePrimary = function(color) {
   this.fileSettings["color"] = color;
   fs.writeFileSync(FILE_NAME, this.fileSettings, "cbor");
   
-  for (let t in this.timeDigits) {
-    this.timeDigits[t].style.fill = COLORS[color].color;      
-  }
+  this.timeText.style.fill = COLORS[color].color;
   
   for (let i in icons) {
     icons[i].style.fill = COLORS[color].color;
@@ -61,25 +56,7 @@ WatchUI.prototype.updateFont = function(font) {
   this.fileSettings["font"] = font;
   fs.writeFileSync(FILE_NAME, this.fileSettings, "cbor");
 
-  for (let t in this.timeDigits) {
-    this.timeDigits[t].style.fontFamily = font;
-  }
-  
-  if (/^Colfax-*/.test(font) || /^System-*/.test(font) || /^Fabrikat-*/.test(font)) {
-    this.timeFormats.timeText.y = 75;
-    
-    this.timeFormats.hour0Box.x = -90;
-    this.timeFormats.hour1Box.x = -30;
-    this.timeFormats.min0Box.x = 30;
-    this.timeFormats.min1Box.x = 90;
-  } else if (/^Tungsten-*/.test(font)) {
-    this.timeFormats.timeText.y = 80;
-
-    this.timeFormats.hour0Box.x = -60;
-    this.timeFormats.hour1Box.x = -20;
-    this.timeFormats.min0Box.x = 20;
-    this.timeFormats.min1Box.x = 60;
-  }
+  this.timeText.style.fontFamily = font;
   this.updateClock();
 }
 
@@ -110,26 +87,19 @@ WatchUI.prototype.updateClock = function(evt) {
   
   if (preferences.clockDisplay === "12h") {
     // 12h format
-    hours = util.zeroPad(hours % 12 || 12).toString().split("");
+    hours = util.zeroPad(hours % 12 || 12).toString();
   } else {
     // 24h format
-    hours = util.zeroPad(hours).toString().split("");
+    hours = util.zeroPad(hours).toString();
   }
-  let mins = util.zeroPad(day.getMinutes()).toString().split("");
-  
-  this.timeDigits.hour0.text = `${hours[0]}`;
-  this.timeDigits.hour1.text = `${hours[1]}`;
-  this.timeDigits.min0.text = `${mins[0]}`;
-  this.timeDigits.min1.text = `${mins[1]}`;
+  let mins = util.zeroPad(day.getMinutes()).toString();
+  this.timeText.text = `${hours}:${mins}`  
 
   this.secondaryTexts.date.text = `${date[0]} ${date[1]} ${date[2]}`.toUpperCase();
   
   // Update stats
   hrm.start();
   this.secondaryTexts.steps.text = today.adjusted.steps || 0;
-  this.secondaryTexts.cals.text = today.adjusted.calories || 0;
-  this.secondaryTexts.floors.text = today.adjusted.elevationGain || 0;
-  this.secondaryTexts.dist.text = today.adjusted.distance || 0;
   this.secondaryTexts.bat.text = Math.floor(battery.chargeLevel) + "%";
 
   this.batRect.width = Math.floor(battery.chargeLevel/100*24);
