@@ -1,13 +1,10 @@
 Simple fitbit clockface.
 
+![](screenshot.png)
+
 # Features
 
-* Toggle-able battery display
 * Time & Date
-* Toggle-able stats display
-** Steps
-** Calories
-** Heartrate
-** Stairs
-** Distance
+* Toggle-able stats display for steps and heartrate
 * Customizable font and colors
+

@@ -4,7 +4,6 @@ import {settingsStorage} from "settings";
 
 // Message socket opens
 messaging.peerSocket.onopen = () => {
-  console.log("Companion Socket Open");
   restoreSettings();
 };
 
@@ -12,12 +11,6 @@ messaging.peerSocket.onopen = () => {
 messaging.peerSocket.onclose = () => {
   console.log("Companion Socket Closed");
 };
-
-messaging.peerSocket.onmessage = function(evt) {
-  if (evt.data && evt.data.tokenRequest) {
-    sendVal(token.reloadTokens(evt.data.tokenRequest));
-  }
-}
 
 settingsStorage.onchange = evt => {
   if (evt.key === "color" || evt.key === "color2" || evt.key === "font") { //simple setting

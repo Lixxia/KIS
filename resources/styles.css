@@ -2,29 +2,12 @@
   viewport-fill: black;
 }
 
-.stats-top {
-  width: 100%;
-  height: 20%;
-  y: 5%;
+#hours {
+  fill: white;
 }
 
-.battery-icon {
-  width: 32;
-  height: 16;
-  x: 50%-16;
+#secs {
   fill: lightgray;
-}
-
-#bat {
-  y: $+5;
-  x: 50%+29;
-}
-
-#batRect {
-  x: $-29;
-  y: $-13;
-  width: 24;
-  height: 10;
 }
 
 #timeText {
@@ -33,7 +16,8 @@
   text-anchor: middle;
   fill: white;
   width: 100%;
-  text-length: 4;
+  opacity: 0.2;
+  text-length: 5;
   height: 100%;
   y: 60%;
   x: 50%;
@@ -41,25 +25,26 @@
 
 #date {
   font-family: Fabrikat-Bold;
-  font-size: 30;
+  font-size: 25;
   text-length: 10;
   text-anchor: middle;
   width: 100%;
   x: 50%;
   y: 30%+120;
-  fill: lightgray;
+  fill: darkgray;
 }
 
-.stats-bottom {
-  width: 100%;
-  height: 50%;
-  y: 87%;
+#stats-cycle {
+  height: 20%;
+  x: 50%+20;
+  y: 50%-14;
 }
 
 .stat-icon {
-  width: 32;
-  height: 32;
-  x: 50%-16;
+  width: 25;
+  height: 25;
+  x: 0;
+  y: 0;
   fill: lightgray;
 }
 
@@ -67,8 +52,7 @@
   font-family: Fabrikat-Bold;
   font-size: 25;
   text-length: 10;
-  text-anchor: middle;
-  x: 50%+16;
-  y: $-5;
-  fill: lightgray;
+  x: 28;
+  y: 22;
+  fill: darkgray;
 }

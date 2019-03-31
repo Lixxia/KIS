@@ -2,11 +2,8 @@ import clock from "clock";
 import * as messaging from "messaging";
 import { WatchUI } from "./interface.js";
 
-import { memory } from "system";
-console.log("JS memory: " + memory.js.used + "/" + memory.js.total);
-
 let ui = new WatchUI();
-clock.granularity = "minutes";
+clock.granularity = "seconds";
 
 // Listen for the onopen event
 messaging.peerSocket.onopen = function() {

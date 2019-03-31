@@ -1,31 +1,94 @@
 <svg class="background">
-  <svg class="stats-top">
-    <use id="stats-cycle" href="#cycleview">
-      <use href="#cycleview-item" class="cycle-item">
-      </use>
-      <use href="#cycleview-item" class="cycle-item">
-        <image id="bat-icon" href="images/battery.png" class="battery-icon" />
-        <rect id="batRect" />
-        <text id="bat"></text>
-      </use>
-    </use>
-  </svg>
-  
+  <defs>
+    <symbol id="hour_mark">
+      <g id="container">
+        <line x1="0" y1="-47%" x2="0" y2="-45%+10" stroke-width="3" fill="inherit" />
+      </g>
+    </symbol>
+
+
+    <symbol id="bg_hour_marks">
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(30)" />
+        </use>
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(60)" />
+        </use>
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(120)" />
+        </use>
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(150)" />
+        </use>
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(210)" />
+        </use>
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(240)" />
+        </use>
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(300)" />
+        </use>
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(330)" />
+        </use>
+    </symbol>
+
+    <symbol id="hour_marks">
+      <g id="container">
+        <use href="#hour_mark" fill="inherit"/>
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(90)" />
+        </use>
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(180)" />
+        </use>
+        <use href="#hour_mark" fill="inherit">
+          <set href="container" attributeName="transform" to="rotate(270)" />
+        </use>
+      </g>
+    </symbol>
+  </defs>
+  <!-- <circle cx="50%" cy="50%" r="49%" fill="white" /> -->
+
+  <g transform="translate(50%,50%)">
+    <use href="#hour_marks" fill="white" />
+    <use href="#bg_hour_marks" fill="dimgray" />
+  </g>
+
   <text id="timeText"/>
   <text id="date" />
   
-  <svg class="stats-bottom">
+  <svg class="stats">
     <use id="stats-cycle" href="#cycleview">
       <use href="#cycleview-item" class="cycle-item">
       </use>
       <use href="#cycleview-item" class="cycle-item">      
-        <image id="hr-icon" href="images/hearts.png" class="stat-icon" />
         <text id="hr"></text>
+        <image id="hr-icon" href="images/hearts.png" class="stat-icon" />
       </use>
       <use href="#cycleview-item" class="cycle-item">
-        <image id="steps-icon" href="images/steps.png" class="stat-icon" />
         <text id="steps" />
+        <image id="steps-icon" href="images/steps.png" class="stat-icon" />
+      </use>
+      <use href="#cycleview-item" class="cycle-item">
+        <text id="blank" />
       </use>
     </use>
   </svg>
+
+  <g id="mins" pointer-events="visible" transform="translate(50%,50%)">
+    <rect x="$-2" y="-110" width="4" height="80"/>
+    <rect x="$-3" y="-50" width="2" height="50"/>
+  </g>
+  <g id="hours" pointer-events="visible" transform="translate(50%,50%)">
+    <rect x="$-2" y="-75" width="4" height="55"/>
+    <rect x="$-3" y="-45" width="2" height="45"/>
+  </g>
+  <g id="secs" pointer-events="visible" transform="translate(50%,50%)">
+    <rect x="$-0" y="-120" width="1" height="120"/>
+  </g>
+
+  <circle cx="50%" cy="50%" r="5" fill="white" />
+
 </svg>
