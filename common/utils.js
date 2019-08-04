@@ -22,3 +22,39 @@ export function minutesToAngle(minutes) {
 export function secondsToAngle(seconds) {
   return (360 / 60) * seconds;
 }
+
+export function hoursToCoord(hours) {
+  var ycoords = {
+    "12": 13,
+    "1": 18,
+    "2": 32,
+    "3": 55,
+    "4": 78,
+    "5": 92,
+    "6": 98,
+    "7": 92,
+    "8": 78,
+    "9": 55,
+    "10": 32,
+    "11": 18
+  }
+  var xcoords = {
+    "12": 50,
+    "1": 72,
+    "2": 90,
+    "3": 95,
+    "4": 90,
+    "5": 72,
+    "6": 50,
+    "7": 28,
+    "8": 10,
+    "9": 5,
+    "10": 10,
+    "11": 28
+  }
+
+  return {
+    x: (xcoords[hours] / 100) * 300,
+    y: (ycoords[hours] / 100) * 300
+  }
+}

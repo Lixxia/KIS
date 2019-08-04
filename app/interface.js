@@ -4,7 +4,6 @@ import * as util from "../common/utils";
 import { COLORS, FILE_NAME } from "../common/globals.js";
 import { HeartRateSensor } from "heart-rate";
 import { today } from "user-activity";
-import { preferences } from "user-settings";
 
 const hrm = new HeartRateSensor();
 
@@ -17,6 +16,8 @@ export function WatchUI() {
   this.secondaryTexts = {};
   this.timeText = document.getElementById("timeText");
   this.mins = document.getElementById("mins");
+  this.hours = document.getElementById("hours");
+  this.timeBg = document.getElementById("timeBg");
 
   ['date','hr','steps'].map(sid => this.secondaryTexts[sid] = document.getElementById(`${sid}`));
   
@@ -40,7 +41,7 @@ WatchUI.prototype.updatePrimary = function(color) {
   fs.writeFileSync(FILE_NAME, this.fileSettings, "cbor");
   
   this.timeText.style.fill = COLORS[color].color;
-  this.mins.style.fill = COLORS[color].color;
+  this.hours.style.fill = COLORS[color].color;
   
   for (let i in icons) {
     icons[i].style.fill = COLORS[color].color;
@@ -76,8 +77,6 @@ WatchUI.prototype.updateClock = function(evt) {
   let minHand = document.getElementById("mins");
   let secHand = document.getElementById("secs");
   let day;
-  let hours;
-
   
   if (typeof evt === "undefined") {
     day = new Date();
@@ -94,6 +93,13 @@ WatchUI.prototype.updateClock = function(evt) {
   minHand.groupTransform.rotate.angle = util.minutesToAngle(mins);
   secHand.groupTransform.rotate.angle = util.secondsToAngle(secs);
    
+  this.timeText.text = `${a_hours}`
+  let {x, y} = util.hoursToCoord(a_hours);
+  this.timeText.x = x;
+  this.timeText.y = y;
+  this.timeBg.x = x - 20;
+  this.timeBg.y = y - 40;
+
   // if (preferences.clockDisplay === "12h") {
   //   hours = util.zeroPad(hours % 12 || 12).toString();
   // } else {

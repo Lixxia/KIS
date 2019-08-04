@@ -6,20 +6,23 @@
   fill: white;
 }
 
+#mins {
+  fill: white;
+}
+
 #secs {
-  fill: lightgray;
+  fill: gray;
 }
 
 #timeText {
-  font-size: 100;
+  font-size: 45;
   font-family: Colfax-Bold;
   text-anchor: middle;
   fill: white;
   width: 100%;
-  opacity: 0.2;
   text-length: 5;
   height: 100%;
-  y: 60%;
+  y: 50%;
   x: 50%;
 }
 
@@ -31,7 +34,7 @@
   width: 100%;
   x: 50%;
   y: 30%+120;
-  fill: darkgray;
+  fill: gray;
 }
 
 #stats-cycle {
