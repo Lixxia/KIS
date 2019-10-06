@@ -88,13 +88,14 @@ WatchUI.prototype.updateClock = function(evt) {
   let a_hours = day.getHours() % 12;
   let mins = day.getMinutes();
   let secs = day.getSeconds();
+  let hours = day.getHours() % 12 || 12;
 
   hourHand.groupTransform.rotate.angle = util.hoursToAngle(a_hours, mins);
   minHand.groupTransform.rotate.angle = util.minutesToAngle(mins);
   secHand.groupTransform.rotate.angle = util.secondsToAngle(secs);
    
-  this.timeText.text = `${a_hours}`
-  let {x, y} = util.hoursToCoord(a_hours);
+  this.timeText.text = `${hours}`
+  let {x, y} = util.hoursToCoord(hours);
   this.timeText.x = x;
   this.timeText.y = y;
   this.timeBg.x = x - 20;
